@@ -1,20 +1,49 @@
-const paramsSchema = {
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/routes/posts/schema.ts
+var schema_exports = {};
+__export(schema_exports, {
+  deletePostsSchema: () => deletePostsSchema,
+  getOnePostSchema: () => getOnePostSchema,
+  getPostsSchema: () => getPostsSchema,
+  postNotFoundSchema: () => postNotFoundSchema,
+  postPostsSchema: () => postPostsSchema,
+  postSchema: () => postSchema,
+  putPostsSchema: () => putPostsSchema
+});
+module.exports = __toCommonJS(schema_exports);
+var paramsSchema = {
   type: "object",
+  require: ["postid"],
   properties: {
     postid: { type: "number" }
   },
   additionalProperties: false
 };
-const querystringSchema = {
+var querystringSchema = {
   type: "object",
   properties: {
-    deleted: {
-      type: "boolean"
-    }
+    deleted: { type: "boolean" }
   },
   additionalProperties: false
 };
-export const postSchema = {
+var postSchema = {
   $id: "post",
   type: "object",
   properties: {
@@ -27,7 +56,7 @@ export const postSchema = {
   },
   required: ["title", "published", "content", "tags", "deleted"]
 };
-const replySchema = {
+var replySchema = {
   type: "object",
   properties: {
     posts: {
@@ -39,7 +68,7 @@ const replySchema = {
   },
   additionalProperties: false
 };
-export const postNotFoundSchema = {
+var postNotFoundSchema = {
   $id: "postNotFound",
   type: "object",
   required: ["error"],
@@ -48,7 +77,7 @@ export const postNotFoundSchema = {
   },
   additionalProperties: false
 };
-export const getPostsSchema = {
+var getPostsSchema = {
   tags: ["Posts"],
   description: "Get posts",
   querystring: querystringSchema,
@@ -58,7 +87,7 @@ export const getPostsSchema = {
     }
   }
 };
-export const getOnePostSchema = {
+var getOnePostSchema = {
   tags: ["Posts"],
   description: "Get a post by id",
   params: paramsSchema,
@@ -72,7 +101,7 @@ export const getOnePostSchema = {
     }
   }
 };
-export const postPostsSchema = {
+var postPostsSchema = {
   tags: ["Posts"],
   description: "Create a new post",
   body: postSchema,
@@ -89,7 +118,7 @@ export const postPostsSchema = {
     }
   }
 };
-export const putPostsSchema = {
+var putPostsSchema = {
   tags: ["Posts"],
   description: "Update a post",
   params: paramsSchema,
@@ -105,7 +134,7 @@ export const putPostsSchema = {
     }
   }
 };
-export const deletePostsSchema = {
+var deletePostsSchema = {
   tags: ["Posts"],
   description: "Delete a post",
   params: paramsSchema,
@@ -120,3 +149,13 @@ export const deletePostsSchema = {
     }
   }
 };
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  deletePostsSchema,
+  getOnePostSchema,
+  getPostsSchema,
+  postNotFoundSchema,
+  postPostsSchema,
+  postSchema,
+  putPostsSchema
+});

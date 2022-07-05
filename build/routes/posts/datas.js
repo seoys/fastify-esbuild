@@ -16,14 +16,39 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// src/routes/root.ts
-var root_exports = {};
-__export(root_exports, {
-  default: () => root_default
+// src/routes/posts/datas.ts
+var datas_exports = {};
+__export(datas_exports, {
+  posts: () => posts
 });
-module.exports = __toCommonJS(root_exports);
-var root = async (fastify, opts) => {
-};
-var root_default = root;
+module.exports = __toCommonJS(datas_exports);
+var posts = [
+  {
+    id: 1,
+    title: "Good Post!",
+    published: true,
+    content: "This is a good post",
+    tags: ["featured"],
+    deleted: false
+  },
+  {
+    id: 2,
+    title: "Better Post!",
+    published: true,
+    content: "This is an even better post",
+    tags: ["featured", "popular"],
+    deleted: false
+  },
+  {
+    id: 3,
+    title: "Great Post!",
+    published: true,
+    content: "This is a great post",
+    tags: ["featured", "popular", "trending"],
+    deleted: false
+  }
+];
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {});
+0 && (module.exports = {
+  posts
+});
